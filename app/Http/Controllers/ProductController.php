@@ -56,7 +56,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        echo "Edit Productos";
+        $brands = Brand::pluck('id', 'brand');
+        echo view('products_edit', compact('brands','product'));
     }
 
     /**
@@ -64,7 +65,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        echo "Update Productos";
+        $product->update($request->all()); // actualizamos los datos con la base de datos
+        return to_route('products.index') -> with('status', 'Producto Actualizado');
+    }
+
+
+    public function delete (Product $product)
+    {
+        echo view('products_delete', compact('product'));
     }
 
     /**
@@ -72,6 +80,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        echo "Destroy Productos";
+        $product -> delete();
+        return to_route('products.index')-> with('status', 'Producto Eliminado');
     }
+
+    
 }

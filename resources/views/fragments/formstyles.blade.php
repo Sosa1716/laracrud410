@@ -33,7 +33,7 @@
         display: flex;
     }
 
-    form button[type=submit]{
+    form button{
         width: 100%;
         padding: 8px 16px;
         margin-block-start: 32px;
@@ -44,4 +44,5 @@
         background-color: #000;
     }
 
+    
 </style>
