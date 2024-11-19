@@ -39,7 +39,7 @@
 
             </td>
             <td>
-                <form action="{{route("brands.destroy", $product->id)}}" method="POST">
+                <form action="{{route("products.destroy", $product->id)}}" method="POST">
                     @method("DELETE")
                     @csrf
                     <button type="submit"> Si</button> <!-- redireccionamos a destroy y elimina -->
