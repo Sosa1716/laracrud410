@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Products\storeRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::get(); // obtener  todos los datos de la tabla
+       // $products = Product::get(); // obtener  todos los datos de la tabla
+       $products = Product::paginate(3);       
         return view('admin/products/index', compact('products'));
         
         
@@ -34,11 +36,18 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(storeRequest $request)
     {
         // echo "Registro Realizado";
         // dd($request);
-        Product::create($request->all());
+        $data = $request->all();
+        if (isset($data["imagen"])) {
+            // cambiar el nombre del archivo a cargar
+            $data["imagen"] = $filename = time(). ".".$data["imagen"]->extension();
+            //guardar imagen en la carpeta publica
+            $request->imagen->move(public_path("image/products"), $filename);
+       } 
+       Product::create($data);
         return to_route('products.index') -> with('status', 'Producto Registrado');
     }
 
@@ -65,7 +74,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->update($request->all()); // actualizamos los datos con la base de datos
+        $data = $request->all();
+        // si el campo imagen tiene informacion
+        if (isset($data["imagen"])) {
+             // cambiar el nombre del archivo a cargar
+             $data["imagen"] = $filename = time(). ".".$data["imagen"]->extension();
+             //guardar imagen en la carpeta publica
+             $request->imagen->move(public_path("image/products"), $filename);
+        } 
+
+        $product->update($data); // actualizamos los datos con la base de datos
         return to_route('products.index') -> with('status', 'Producto Actualizado');
     }
 
