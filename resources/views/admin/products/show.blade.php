@@ -2,11 +2,19 @@
 
 @section('content')
 
-<h1> Detalles del producto </h1>
-<h3> Producto: {{$product ->nameProduct}}</h3>
-<h3> Cantidad: {{$product ->stock}}</h3>
-<h3> Precio: {{$product ->unitPrice}}</h3>
-<h3> Imagen: {{$product ->imagen}}</h3>
+<div class="container sm">
+    <br><br>
+    <div class="card">
+        <div class="card-body">
+            <h1 class="text-center"> Detalles del producto </h1>
+            <p class="card-text"> Producto: {{$product ->nameProduct}}</p>
+            <p class="card-text"> Cantidad: {{$product ->stock}}</p>
+            <p class="card-text"> Precio: {{$product ->unit_price}}</p>
+            <p class="card-text"> Imagen: {{$product ->imagen}}</p>
+        </div>
+    </div>
+</div>
+
 
 <!--Todo show Image-->
 

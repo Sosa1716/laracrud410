@@ -1,20 +1,22 @@
 @extends('layout.main_template')
 
 @section('content')
-<h2> Index Productos</h2>
+<h2>Productos</h2>
 
-<button><a href="{{route('products.create')}}"> Crear Productos</a></button>
-<button><a href="{{route('brands.create')}}"> Registrar Marcas</a></button>
-<button><a href="{{route('brands.index')}}"> Ver Marcas</a></button>
+<div class="container mt-5">
+    <div class="container mt-5">
+        <a class="btn btn-outline-primary" href="{{route('products.create')}}"> Crear Productos</a>
+        <a class="btn btn-outline-success" href="{{route('brands.create')}}"> Registrar Marcas</a>
+         <a class="btn btn-outline-danger" href="{{route('brands.index')}}"> Ver Marcas</a>
 
 <br>
 <br>
 
-<table>
+
+<table class="table table-bordered border-primary">
     <thead>
         <th> Nombre del productos </th>
         <th> Marca </th>
-        <th> Descripcion</th>
         <th> Cantidad </th>
         <th> Precio </th>
         <th> Imagen </th>
@@ -22,18 +24,17 @@
     </thead>
 
     <tbody>
-        @foreach ( $products as $p)
+        @foreach ($products as $p)
         <tr>
             <td>{{$p->nameProduct}}</td>
             <td>{{$p->brand->brand}}</td>
-            <th>{{$p->brand->descripcion}}</th>
             <td>{{$p->stock}}</td>
             <td>{{$p->unit_price}}</td>
             <td><img src="/image/products/{{$p ->imagen}}" width="60" alt="producto"></td>
             <td>
-                <button><a href="{{route("products.show", $p)}}">Mostrar</a></button>
-                <button><a href="{{route("products.edit", $p)}}">Editar</a></button> 
-                <button> <a href="{{route("products.delete", $p)}}"> Eliminar </a></button>
+                <a class="btn btn-info" href="{{route("products.show", $p)}}"><i class="fa-solid fa-eye"></i></a>
+                <a class="btn btn-warning" href="{{route("products.edit", $p)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a class="btn btn-danger" href="{{route("products.delete", $p)}}"><i class="fa-solid fa-trash"></i></i> </a>
             </td>
         </tr>
             
@@ -43,4 +44,6 @@
 
 {{$products->links()}}<!--Genera los enlaces de cada pagina-->
     
+    </div>
+</div>
 @endsection

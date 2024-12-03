@@ -28,15 +28,15 @@
 <div class="container mt-5">
     
     <h3 class="text-center">¿Estas seguro que quieres eliminar
-        el Producto {{$product->nameProduct}}?</h3>    
+        la Marca {{$brand->brand}}?</h3>    
    
        <div class="d-flex justify-content-center gap-3">
         
-        <form action="{{route("products.index")}}">
+        <form action="{{route("brands.index")}}">
             <button type="submit" class="btn btn-success">No</button>
         </form>
        
-        <form action="{{route("products.destroy", $product->id)}}" method="POST">
+        <form action="{{route("brands.destroy", $brand->id)}}" method="POST">
             @method("DELETE")
             @csrf
             <button type="submit" class="btn btn-info"> Si</button> <!-- redireccionamos a destroy y elimina -->

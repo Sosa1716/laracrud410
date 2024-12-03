@@ -1,34 +1,37 @@
 @extends('layout.main_template')
 
 @section('content')
-<button><a href="{{route('products.index')}}"> Regresar</a></button>
+<div class="container mt-5">
+    <div class="container mt-5">
+        <a class="btn btn-secondary" href="{{route('products.index')}}"> Regresar</a>
+        <br>
+        <br>
 
-<table>
-    <thead>
-        <th> Marca </th>
-        <th> descripcion </th>
-        <th> Accioness </th>
-    </thead>
+        <table class="table">
+            <thead>
+                <th class="text-center"> Marca </th>
+                <th class="text-center">  Accioness </th>
+            </thead>
+        
+            <tbody>
+                @foreach ( $brand as $b)
+                <tr>
+                    <td class="text-center">{{$b->brand}}</td>
+                    
+                  
+                    <td  style="display: flex; gap: 5px;" >
+                    
+                        <a class="btn btn-warning " href="{{route("brands.edit", $b)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a class="btn btn-danger" href="{{route("brands.delete", $b)}}"><i class="fa-solid fa-trash"></i></i> </a>
 
-    <tbody>
-        @foreach ( $brand as $b)
-        <tr>
-            <td>{{$b->brand}}</td>
-            <td>{{$b->descripcion}}</td>
-          
-            <td>
-                
-                <button><a href="{{route("brands.edit", $b)}}">Editar</a></button>
-                <form action="{{route("brands.destroy", $b)}}" method="POST">
-                    @method("DELETE")
-                    @csrf
-                    <button type="submit"> Eliminar </a></button>
-                </form>
-            </td>
-        </tr>
-            
-        @endforeach
-    </tbody>
-</table>
+                    </td>
+                </tr>
+                    
+                @endforeach
+            </tbody>
+        </table>
 
+       
+    </div>
+</div>
 @endsection

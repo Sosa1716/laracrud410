@@ -4,7 +4,7 @@
     }
 
     form{
-        width: 300px;
+        width: 350px;
         padding-inline: 20px;
         padding-block: 20px;
         border-radius: 12px;
@@ -14,17 +14,17 @@
     }
 
     form label{
-        width: 140px;
+        width: 300px;
         height: 10px;
         font-weight: bold;
         font-family: Arial, Helvetica, sans-serif;
-        display: inline-block;
+        display:inline-block;
         
     }
 
     form input[type="text"],
     form input[type="number"]{
-        width: 200px;
+        width: 300px;
         padding-block: 3px;
         border: 1px solid #ffffff;
         border-radius: 3px;
@@ -41,7 +41,7 @@
         border-radius: 5px;
         display: block;
         color: #fff;
-        background-color: #000;
+        background-color: #f0933b;
     }
 
     

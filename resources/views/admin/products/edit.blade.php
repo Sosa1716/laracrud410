@@ -26,7 +26,7 @@
     <input type="number" name="stock" value="{{$product->stock}}">
 
     <label for=""> Precio Unitadio </label>
-    <input type="text" name="unit_price" value="{{$product->unitPrice}}">
+    <input type="text" name="unit_price" value="{{$product->unit_price}}">
 
     <label for=""> Imagen </label>
     <input type="file" name="imagen">
